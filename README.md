@@ -25,89 +25,88 @@ All scripts are written in the R programming language:
 
 ## Source Data
 
-* Guilt by association machine learning methods (GBA ML):
+#### Guilt by association machine learning methods (GBA ML):
 
-1) Princeton
-    a) Paper: Krishnan et al., (2016) Genome-wide prediction and functional characterization of the genetic basis of autism spectrum disorder. Nat Neuro
-    b) Data: 
+* *Princeton*
+    * Paper: Krishnan et al., (2016) Genome-wide prediction and functional characterization of the genetic basis of autism spectrum disorder. Nat Neuro
+    * Data: 
         * training labels: Supplementary table 1
         * gene scores: Supplemtnary table 3
-        * [http://asd.princeton.edu/] 
-2) FRN
-    a) Paper: Duda et al., (2018) Brain-specific functional relationship networks inform autism spectrum disorder gene prediction. Trans Psych.
-    b) Data: [https://github.com/GuanLab/ASD_FRN]
+        * http://asd.princeton.edu/
+* *FRN*
+    * Paper: Duda et al., (2018) Brain-specific functional relationship networks inform autism spectrum disorder gene prediction. Trans Psych.
+    * Data: https://github.com/GuanLab/ASD_FRN
     
-3) DAMAGES
-    a) Paper: Zhang and Shen (2017), A Cell Type-Specific Expression Signature Predicts Haploinsufficient Autism-Susceptibility Genes. Hum Mutat
-    b) Data: 
+* *DAMAGES*
+    * Paper: Zhang and Shen (2017), A Cell Type-Specific Expression Signature Predicts Haploinsufficient Autism-Susceptibility Genes. Hum Mutat
+    * Data: 
         * gene scores + tranining labels: Supplemental table 4
     
-4) RF_Lin
-    a) Paper: Lin et al., (2018) A machine learning approach to predicting autism risk genes: Validation of known genes and discovery of new candidates
-    b) Data: Supplementary table 2
+* *RF_Lin*
+    * Paper: Lin et al., (2018) A machine learning approach to predicting autism risk genes: Validation of known genes and discovery of new candidates
+    * Data: Supplementary table 2
 
-5) PANDA
-    a) Paper: Zhang et al., (2020), PANDA: Prioritization of autism-genes using network-based deep-learning approach. Genet Epidemiol
-    b) Data: [https://github.com/MIB-Lab/PANDA]
+* *PANDA*
+    * Paper: Zhang et al., (2020), PANDA: Prioritization of autism-genes using network-based deep-learning approach. Genet Epidemiol
+    * Data: https://github.com/MIB-Lab/PANDA
 
-* Hybrid GBA ML - genetics methods
+####  Hybrid GBA ML - genetics methods
 
-1) forecASD
-    a) Paper: Brueggeman et al., (2020) Forecasting risk gene discovery in autism with machine learning and genome-scale data. Sci Reports
-    b) Data: [https://github.com/LeoBman/forecASD]
+* *forecASD*
+    * Paper: Brueggeman et al., (2020) Forecasting risk gene discovery in autism with machine learning and genome-scale data. Sci Reports
+    * Data: [https://github.com/LeoBman/forecASD]
     
-2) DAWN
-    a) Paper: Liu et al., (2014) DAWN: a framework to identify autism genes and subnetworks using gene expression and genetics. Mol Autism
-    b) Data: Supplemental table S4
+* *DAWN*
+    * Paper: Liu et al., (2014) DAWN: a framework to identify autism genes and subnetworks using gene expression and genetics. Mol Autism
+    * Data: Supplemental table S4
     
-* Genetic association methods (GA)
+####  Genetic association methods (GA)
 
-1) DeRubeis
-    a) Paper: 
-    b) Data: 
+* *DeRubeis*
+    * Paper: 
+    * Data: 
     
-2) Sanders
-    a) Paper: 
-    b) Data: 
+* *Sanders*
+    * Paper: 
+    * Data:  
     
-3) iHart
-    a) Paper: 
-    b) Data: 
+* *iHart*
+    * Paper: 
+    * Data: 
     
-4) Satterstrom
-    a) Paper: 
-    b) Data: 
+* *Satterstrom*
+    * Paper: 
+    * Data: 
     
-5) Spark
-    a) Paper: 
-    b) Data: 
+* *Spark*
+    * Paper: 
+    * Data: 
     
-6) Iossifov
-    a) Paper: 
-    b) Data: 
+* *Iossifov*
+    * Paper: 
+    * Data: 
     
-* SFARI
 
-1) SFARI
-    b) Data: SFARIGene released 01-03-2020
+#### SFARI
+    * Data: SFARIGene released 01-03-2020
 
-* Constraint scores
+####  Constraint scores
 
-1) ExAC pLI, mis_z
-    a) Paper: Lek et al., (2016) Analysis of protein-coding genetic variation in 60,706 humans. Nature
-    b) Data: [https://gnomad.broadinstitute.org/about]
+* *ExAC pLI, mis_z*
+    * Paper: Lek et al., (2016) Analysis of protein-coding genetic variation in 60,706 humans. Nature
+    * Data: [https://gnomad.broadinstitute.org/about]
     
-2) gnomad pLI, oe_LoF
-    a) Paper: Karczewski et al., (2020) The mutational constraint spectrum quantified from variation in 141,456 humans. Nature
-    b) Data: [https://gnomad.broadinstitute.org/about]
+* *gnomad pLI, oe_LoF*
+    * Paper: Karczewski et al., (2020) The mutational constraint spectrum quantified from variation in 141,456 humans. Nature
+    * Data: [https://gnomad.broadinstitute.org/about]
 
-* Generic scores
+#### Generic scores
 
-1) Number of publications
-    b) Data: In-house calculation of number of PubMed publications per gene.
+* *Number of publications*
+    * Data: In-house calculation of number of PubMed publications per gene.
     
-2) Multifunctionaltiy score
-    b) Data: In-house calculation of number of functions per gene based on GO anntotation. 
+* *Multifunctionaltiy score*
+    * Data: In-house calculation of number of functions per gene based on GO anntotation. 
     
-3) Number of physical interaction partners
-    b) Data: Calcualted from BioGrid version="3.5.169". 
+* *Number of physical interaction partners*
+    * Data: Calcualted from BioGrid version="3.5.169". 
