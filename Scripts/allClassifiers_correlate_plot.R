@@ -76,11 +76,8 @@ labelColourX = c(ASDprinceton_score = "#E41A1C",
 #all GA
 #new.SFARIscores
 #exac and gnomad and pLI, and oe lof
-#N.Lim Mfx scores used
-#S.Bhuiyan pubmed numbers used
-#biogrid PPI used
+#multifuncaltiy scores, number oh physical interaction partners, number of publications
 
-#png("Results/allClassifiers/plots/paper_heatmap_all_testFinal_20201016.png", width=825, height=563)
 grDevices::postscript("Results/allClassifiers/plots/allScoreHeatmap.ps")
 allClassifiers_cor %>%
     dplyr::select(primary.gene.symbol,

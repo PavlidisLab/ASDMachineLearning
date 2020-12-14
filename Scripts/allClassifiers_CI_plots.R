@@ -18,8 +18,8 @@ allClassifiers_ROC = read.csv("Data/allClassifiers/transformedClassifiers/allCla
 ####
 #CI PLOTS and Tables
 ####
-new.SFARIHC_CI = read.csv( "Results/allClassifiers/SFARIHC_bootstrap_2020.csv", stringsAsFactors = FALSE) %>%  dplyr::select(-X) %>%dplyr::mutate(SFARIset="")
-new.novel_CI = read.csv( "Results/allClassifiers/TADAnovel_bootstrap_2020.csv", stringsAsFactors = FALSE)%>%  dplyr::select(-X) %>%dplyr::mutate(SFARIset="new.SFARIHC")
+new.SFARIHC_CI = read.csv( "Results/allClassifiers/SFARIHC_bootstrap_202012.csv", stringsAsFactors = FALSE) %>%  dplyr::select(-X) %>%dplyr::mutate(SFARIset="")
+new.novel_CI = read.csv( "Results/allClassifiers/TADAnovel_bootstrap_202012.csv", stringsAsFactors = FALSE)%>%  dplyr::select(-X) %>%dplyr::mutate(SFARIset="new.SFARIHC")
 
 
 
@@ -663,25 +663,20 @@ plotROC_PR = function(type,score, genesInPhenotype, positiveLabels, SFARIset, sa
 ###
 #TADA_novel; test expt
 ###
-#png("test2.png", width=2000, height=800)
 gba = plotROC_PR(type="GBA_ML",
                  score = c("ASDprinceton_score", "ASD_frn_score", "DAMAGES_score","RF_Lin_score", "forecASD_score", "DAWN_score", "PANDA_score"),
                  genesInPhenotype = rep("TADA_novel", 7),
                  positiveLabels = c("ASDprinceton_posLabs", "ASDfrn_posLabs", "DAMAGES_posLabs", "ASDfrn_posLabs", "forecASD_posLabs", "new.SFARIHC", "PANDA_posLabs"),
                  SFARIset = rep("new.SFARIHC",7),
                  sampleSet= rep("",7))
-#dev.off()
 
-#png("test3.png", width=2000, height=800)
 gen = plotROC_PR(type="Genetics",
                  score = c("DeRubeis_score", "Sanders_score", "iHart_score","Satterstrom_score", "Iossifov_score"),
                  genesInPhenotype = rep("TADA_novel", 5),
                  positiveLabels = c("new.SFARIHC", "new.SFARIHC", "new.SFARIHC", "new.SFARIHC", "new.SFARIHC"),
                  SFARIset = rep("new.SFARIHC",5),
                  sampleSet= rep("",5))
-#dev.off()
 
-#png("test4.png", width=2000, height=800)
 ger = plotROC_PR(type="Generic",
                  score = c("exac_pLI_score", "gnomad_pLI_score", "oe_lof_upper_score"),
                  genesInPhenotype = rep("TADA_novel", 3),
@@ -690,7 +685,6 @@ ger = plotROC_PR(type="Generic",
                  sampleSet= rep("",3))
 #dev.off()
 
-#jpeg("Results/allClassifiers/plots/test5.2_final_final.jpeg", width = 1700, height = 1650)
 grDevices::postscript("Results/allClassifiers/plots/novel_AUROC_PR_CI.ps")
 ggarrange(gba, ger, gen, ncol=3)
 dev.off()
@@ -699,32 +693,26 @@ dev.off()
 #SFARIHC; cntrl expt
 ###
 
-#png("test2.png", width=2000, height=800)
 gba = plotROC_PR(type="GBA_ML",
                  score = c("ASDprinceton_score", "ASD_frn_score", "DAMAGES_score","RF_Lin_score", "forecASD_score", "DAWN_score", "PANDA_score"),
                  genesInPhenotype = rep("new.SFARIHC", 7),
                  positiveLabels = rep("", 7),
                  SFARIset = rep("",7),
                  sampleSet= rep("",7))
-#dev.off()
 
-#png("test3.png", width=2000, height=800)
 gen = plotROC_PR(type="Genetics",
                  score = c("DeRubeis_score", "Sanders_score", "iHart_score","Satterstrom_score", "Iossifov_score"),
                  genesInPhenotype = rep("new.SFARIHC", 5),
                  positiveLabels = rep("", 5),
                  SFARIset = rep("",5),
                  sampleSet= rep("",5))
-#dev.off()
 
-#png("test4.png", width=2000, height=800)
 ger = plotROC_PR(type="Generic",
                  score = c("exac_pLI_score", "gnomad_pLI_score", "oe_lof_upper_score"),
                  genesInPhenotype = rep("new.SFARIHC", 3),
                  positiveLabels = rep("", 3),
                  SFARIset = rep("",3),
                  sampleSet= rep("",3))
-#dev.off()
 
 grDevices::postscript("Results/allClassifiers/plots/SFARIHC_AUROC_PR_CI.ps")
 ggarrange(gba, ger, gen, ncol=3) 
