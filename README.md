@@ -54,37 +54,37 @@ All scripts are written in the R programming language:
 
 * *forecASD*
     * Paper: Brueggeman et al., (2020) Forecasting risk gene discovery in autism with machine learning and genome-scale data. Sci Reports
-    * Data: [https://github.com/LeoBman/forecASD]
+    * Data: https://github.com/LeoBman/forecASD
     
 * *DAWN*
     * Paper: Liu et al., (2014) DAWN: a framework to identify autism genes and subnetworks using gene expression and genetics. Mol Autism
-    * Data: Supplemental table S4
+    * Data: Supplemental table 4
     
 ####  Genetic association methods (GA)
 
 * *DeRubeis*
-    * Paper: 
-    * Data: 
+    * Paper: De Rubeis et al., (2014) Synaptic, transcriptional and chromatin genes disrupted in autism. Nature
+    * Data: Supplemental table 2
     
 * *Sanders*
-    * Paper: 
-    * Data:  
+    * Paper: Sanders et al., (2015) Insights into Autism Spectrum Disorder Genomic Architecture and Biology from 71 Risk Loci. Neuron. 
+    * Data: Supplemental table 6
     
 * *iHart*
-    * Paper: 
-    * Data: 
+    * Paper: Ruzzo et al., (2019) Inherited and De Novo Genetic Risk for Autism Impacts Shared Networks. Cell
+    * Data: Supplemental table 3
     
 * *Satterstrom*
-    * Paper: 
-    * Data: 
+    * Paper: Satterstrom et al., (2020) Large-Scale Exome Sequencing Study Implicates Both Developmental and Functional Changes in the Neurobiology of Autism. Cell
+    * Data: Supplemental tables 4, 5
     
 * *Spark*
-    * Paper: 
-    * Data: 
+    * Paper: Feliciano et al., (2019) Exome sequencing of 457 autism families recruited online provides evidence for autism risk genes. NPJ Genome Med
+    * Data: Supplemental table 7
     
 * *Iossifov*
-    * Paper: 
-    * Data: 
+    * Paper: Iossifov et al., (2015) Low load for disruptive mutations in autism genes and their biased transmission. PNAS
+    * Data: Supplemental table 1, 2
     
 
 #### SFARI
@@ -95,11 +95,11 @@ All scripts are written in the R programming language:
 
 * *ExAC pLI, mis_z*
     * Paper: Lek et al., (2016) Analysis of protein-coding genetic variation in 60,706 humans. Nature
-    * Data: [https://gnomad.broadinstitute.org/about]
+    * Data: https://gnomad.broadinstitute.org/about
     
 * *gnomad pLI, oe_LoF*
     * Paper: Karczewski et al., (2020) The mutational constraint spectrum quantified from variation in 141,456 humans. Nature
-    * Data: [https://gnomad.broadinstitute.org/about]
+    * Data: https://gnomad.broadinstitute.org/about
 
 #### Generic scores
 
