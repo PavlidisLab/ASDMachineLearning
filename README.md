@@ -12,10 +12,12 @@ URL: [https://doi.org/10.1101/2020.11.26.394676](https://doi.org/10.1101/2020.11
 
 All scripts are written in the R programming language: 
 
+*allClassifiers*:
 * Performance Evalaution: allClassifiers_evaluate.R 
 * Confidence Internval Plots: allClassifiers_CI_plots.R
 * Correlation Plots: allClassifiers_correlate_plot.R
 
+*forecASD retest*:
 * forecASD Model Modification: 
 
 
