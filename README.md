@@ -10,11 +10,14 @@ URL: [https://doi.org/10.1101/2020.11.26.394676](https://doi.org/10.1101/2020.11
 
 ## Code
 
-All scripts are written in the R programming language
+All scripts are written in the R programming language: 
 
-* 
-*
-*
+* Performance Evalaution 
+* Confidence Internval Plots
+* Correlation Plots
+
+* forecASD Model Modification
+
 
 
 ## Packages
