@@ -14,16 +14,6 @@ library(purrr)
 ######
 ###
 
-#setwd("/home/mgunning/GitHub/autism_project/autism_classifiers/final")
-setwd("/home/mgunning/AutismProject/Classifiers")
-
-#allClassifiers = read.csv("dat/allClassifiers_20200317.csv", stringsAsFactors = FALSE) %>%
-#    dplyr::select(-X) 
-
-#allClassifiers_ROC = read.csv("Data/allClassifiers/transformedClassifiers/allClassifiers_20201016_temp.csv", stringsAsFactors = FALSE) %>%
-#    dplyr::select(-X) 
-
-
 allClassifiers_ROC = read.csv("Data/allClassifiers/transformedClassifiers/allClassifiers_202012.csv", stringsAsFactors = FALSE) %>%
     dplyr::select(-X) 
 
@@ -221,21 +211,20 @@ getAUCs = function(score, genesInPhenotype, positiveLabels, SFARIset, sampleSet)
 }
 
 
-test2 = getAUCs("forecASD_score", "new.SFARIHC", "","","")
+#test2 = getAUCs("forecASD_score", "new.SFARIHC", "","","")
 
-t3=Sys.time()
-test4 = getAUCs("forecASD_score", "TADA_novel", "forecASD_posLabs","new.SFARIHC","")
-t4=Sys.time()
+#t3=Sys.time()
+#test4 = getAUCs("forecASD_score", "TADA_novel", "forecASD_posLabs","new.SFARIHC","")
+#t4=Sys.time()
 
 
-getAUCs("DeRubeis_score", "new.SFARIHC", "","","")
 #############
 #bootstrap
 
-#bootstraph for getAUCS for 95% CIS:
+#bootstrap for getAUCS for 95% CIS:
 
 #score = name of score being evaluated = output will be ordered by this score: highest 1=ASD to 0=no ASD
-#genesInPhenotype = gene set being evalauted = new.SFARI-HC or TADA_novel
+#genesInPhenotype = gene set being evaluated = new.SFARI-HC or TADA_novel
 #positiveLabels = training genes for score = i.e. forecASD_posLabs or "" for GA studies
 #SFARIset = specify SFARIHC, new.SFARIHC to make sure the genes are removed if TADA_novel
 
@@ -326,13 +315,6 @@ evaluativeAUCRatesBootstrap = function(score, genesInPhenotype, positiveLabels, 
     
 }
 
-
-
-test2 = evaluativeAUCRatesBootstrap("forecASD_score", "new.SFARIHC", "","")
-
-t3=Sys.time()
-test4 = evaluativeAUCRatesBootstrap("forecASD_score", "TADA_novel", "forecASD_posLabs","new.SFARIHC")
-t4=Sys.time()
 
 ####
 #2 evaluations:

@@ -10,23 +10,7 @@ library(ggplot2)
 library(purrr)
 library(tidyr)
 
-library(ggpubr)
-
-
-library(DescTools)
-library(RColorBrewer)
-
-
-library(Hmisc)
-
-
-
 #####
-setwd("/home/mgunning/AutismProject/Classifiers")
-
-#allClassifiers = read.csv("Data/allClassifiers/transformedClassifiers/allClassifiers_20201016_temp.csv", stringsAsFactors = FALSE) %>%
-#    dplyr::select(-X) 
-
 allClassifiers_ROC = read.csv("Data/allClassifiers/transformedClassifiers/allClassifiers_202012.csv", stringsAsFactors = FALSE) %>%
     dplyr::select(-X) 
 
@@ -34,9 +18,6 @@ allClassifiers_ROC = read.csv("Data/allClassifiers/transformedClassifiers/allCla
 ####
 #CI PLOTS and Tables
 ####
-#new.SFARIHC_CI = read.csv( "Results/allClassifiers/new.SFARIHCAUCs_bootstrap_20201016_temp.csv", stringsAsFactors = FALSE) %>%  dplyr::select(-X) %>%dplyr::mutate(SFARIset="")
-#new.novel_CI = read.csv( "Results/allClassifiers/novelAUCs_new.SFARIHC_bootstrap_20201016_temp.csv", stringsAsFactors = FALSE)%>%  dplyr::select(-X) %>%dplyr::mutate(SFARIset="new.SFARIHC")
-
 new.SFARIHC_CI = read.csv( "Results/allClassifiers/SFARIHC_bootstrap_2020.csv", stringsAsFactors = FALSE) %>%  dplyr::select(-X) %>%dplyr::mutate(SFARIset="")
 new.novel_CI = read.csv( "Results/allClassifiers/TADAnovel_bootstrap_2020.csv", stringsAsFactors = FALSE)%>%  dplyr::select(-X) %>%dplyr::mutate(SFARIset="new.SFARIHC")
 
@@ -710,7 +691,7 @@ ger = plotROC_PR(type="Generic",
 #dev.off()
 
 #jpeg("Results/allClassifiers/plots/test5.2_final_final.jpeg", width = 1700, height = 1650)
-grDevices::postscript("Results/allClassifiers/plots/novel_AUROC_PR_CI_20201019.ps")
+grDevices::postscript("Results/allClassifiers/plots/novel_AUROC_PR_CI.ps")
 ggarrange(gba, ger, gen, ncol=3)
 dev.off()
 
@@ -745,7 +726,7 @@ ger = plotROC_PR(type="Generic",
                  sampleSet= rep("",3))
 #dev.off()
 
-grDevices::postscript("Results/allClassifiers/plots/SFARIHC_AUROC_PR_CI_20201019.ps")
+grDevices::postscript("Results/allClassifiers/plots/SFARIHC_AUROC_PR_CI.ps")
 ggarrange(gba, ger, gen, ncol=3) 
 
 dev.off()

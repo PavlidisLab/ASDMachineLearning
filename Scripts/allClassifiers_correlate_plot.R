@@ -14,15 +14,6 @@ library(zoo)
 #data and meta
 ###
 
-#setwd("/home/mgunning/GitHub/autism_project/autism_classifiers/final")
-setwd("/home/mgunning/AutismProject/Classifiers")
-
-#allClassifiers = read.csv("dat/allClassifiers_20200317.csv", stringsAsFactors = FALSE) %>%
-#    dplyr::select(-X) 
-
-#allClassifiers = read.csv("Data/allClassifiers/transformedClassifiers/allClassifiers_20201016_temp.csv", stringsAsFactors = FALSE) %>%
-#    dplyr::select(-X) 
-
 allClassifiers_cor = read.csv("Data/allClassifiers/transformedClassifiers/allClassifiers_202012.csv", stringsAsFactors = FALSE) %>%
     dplyr::select(-X) 
 
@@ -90,7 +81,7 @@ labelColourX = c(ASDprinceton_score = "#E41A1C",
 #biogrid PPI used
 
 #png("Results/allClassifiers/plots/paper_heatmap_all_testFinal_20201016.png", width=825, height=563)
-grDevices::postscript("Results/allClassifiers/plots/allScoreHeatmap_20201019.ps")
+grDevices::postscript("Results/allClassifiers/plots/allScoreHeatmap.ps")
 allClassifiers_cor %>%
     dplyr::select(primary.gene.symbol,
                   ASDprinceton_score, ASD_frn_score, DAMAGES_score,RF_Lin_score,PANDA_score,
@@ -171,6 +162,6 @@ allClassifiers_overlap = allClassifiers_cor %>%
 overlap = crossprod(as.matrix(allClassifiers_overlap[2:17]))            # calculate the overlap               
 overlap[lower.tri(overlap)] <- NA
 
-write.csv(overlap, "Results/allClassifiers/topOverlap_20201016_temp.csv")
+write.csv(overlap, "Results/allClassifiers/topOverlap.csv")
 
 
