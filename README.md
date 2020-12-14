@@ -88,7 +88,8 @@ All scripts are written in the R programming language:
     
 
 #### SFARI
-    * Data: SFARIGene released 01-03-2020
+
+* SFARIGene released 01-03-2020
 
 ####  Constraint scores
 
