@@ -2,7 +2,7 @@
 ## Data
 
 * Main data table includes: 
-    * gene scores for GBA ML, Hybrid, GA, and Constraint methods
+    * gene scores for GBA ML, Hybrid, GA, and Constraint methods, including forecASD model adaptation gene scores
     * gene scores for generic gene annotations
     
     * positive training labels for GBA ML methods (binary)
@@ -49,6 +49,9 @@
     * Paper: Brueggeman et al., (2020) Forecasting risk gene discovery in autism with machine learning and genome-scale data. Sci Reports
     * Data: https://github.com/LeoBman/forecASD
         * gene score column: forecASD
+        
+        * modified script: 03_ensemble_model.R
+            * adapted trained random forests by removing different feature sets, and obtained the updated gene score for each adapted model
     
 * *DAWN*
     * Paper: Liu et al., (2014) DAWN: a framework to identify autism genes and subnetworks using gene expression and genetics. Mol Autism
@@ -112,3 +115,12 @@
     
 * *Number of physical interaction partners*
     * Data: Calcualted from BioGrid version="3.5.169". 
+    
+#### Gene Symbols
+
+* *NCBI*
+    * https://ftp-ncbi-nih-gov.ezproxy.library.ubc.ca/gene/DATA/
+    * gene_info: NCBI gene symbols
+        * downloaded: July 21, 2019
+    * gene_history: NCBI gene history with discontinued, changed gene names
+        * downloaded: July 21, 2019
