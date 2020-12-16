@@ -9,22 +9,27 @@ library(dplyr)
 library(ggplot2)
 library(purrr)
 library(tidyr)
+library(ggpubr)
 
 #####
-allClassifiers_ROC = read.csv("Data/allClassifiers/transformedClassifiers/allClassifiers_202012.csv", stringsAsFactors = FALSE) %>%
+
+allClassifiers_ROC = read.csv("/home/mgunning/AutismProject/ASDMachineLearning/Data/allClassifiers_forecASD_2012.csv", stringsAsFactors = FALSE) %>%
     dplyr::select(-X) 
 
 
 ####
 #CI PLOTS and Tables
 ####
-new.SFARIHC_CI = read.csv( "Results/allClassifiers/SFARIHC_bootstrap_202012.csv", stringsAsFactors = FALSE) %>%  dplyr::select(-X) %>%dplyr::mutate(SFARIset="")
-new.novel_CI = read.csv( "Results/allClassifiers/TADAnovel_bootstrap_202012.csv", stringsAsFactors = FALSE)%>%  dplyr::select(-X) %>%dplyr::mutate(SFARIset="new.SFARIHC")
+new.SFARIHC_CI = read.csv( "/home/mgunning/AutismProject/ASDMachineLearning/Results/SFARIHC_bootstrap_202012.csv", stringsAsFactors = FALSE) %>%  dplyr::select(-X) %>%dplyr::mutate(SFARIset="")
+new.novel_CI = read.csv( "/home/mgunning/AutismProject/ASDMachineLearning/Results/TADAnovel_bootstrap_202012.csv", stringsAsFactors = FALSE)%>%  dplyr::select(-X) %>%dplyr::mutate(SFARIset="new.SFARIHC")
 
+forecASD.new.SFARIHC_CI = read.csv( "/home/mgunning/AutismProject/ASDMachineLearning/Results/forecASD_SFARIHC_bootstrap_202012.csv", stringsAsFactors = FALSE) %>%  dplyr::select(-X) %>%dplyr::mutate(SFARIset="")
+forecASD.new.novel_CI = read.csv( "/home/mgunning/AutismProject/ASDMachineLearning/Results/forecASD_TADAnovel_bootstrap_202012.csv", stringsAsFactors = FALSE)%>%  dplyr::select(-X) %>%dplyr::mutate(SFARIset="new.SFARIHC")
 
-
-allCIs = rbind(new.SFARIHC_CI ,new.novel_CI) %>%
+allCIs = rbind( new.SFARIHC_CI ,new.novel_CI,forecASD.new.SFARIHC_CI,forecASD.new.novel_CI) %>%
     dplyr::rename(., "method.name"="score")
+
+
 
 ####
 #CI PLOTS and Tables
@@ -685,7 +690,7 @@ ger = plotROC_PR(type="Generic",
                  sampleSet= rep("",3))
 #dev.off()
 
-grDevices::postscript("Results/allClassifiers/plots/novel_AUROC_PR_CI.ps")
+grDevices::postscript("/home/mgunning/AutismProject/Results/Results/allClassifiers/plots/novel_AUROC_PR_CI.ps")
 ggarrange(gba, ger, gen, ncol=3)
 dev.off()
 
@@ -714,9 +719,37 @@ ger = plotROC_PR(type="Generic",
                  SFARIset = rep("",3),
                  sampleSet= rep("",3))
 
-grDevices::postscript("Results/allClassifiers/plots/SFARIHC_AUROC_PR_CI.ps")
+grDevices::postscript("/home/mgunning/AutismProject/Results/allClassifiers/plots/SFARIHC_AUROC_PR_CI.ps")
 ggarrange(gba, ger, gen, ncol=3) 
 
 dev.off()
+
+###
+#forecASD models on TADAnovel; cntrl expt
+###
+forec_novel = plotROC_PR(type="forec",
+                         score = c("redo_forec_score", "noClass_forec_score", "noClassPPI_forec_score","noClassPPIBS_forec_score", "PPIonly_forec_score", "BrainSpanOnly_forec_score"),
+                         genesInPhenotype = rep("TADA_novel", 6),
+                         positiveLabels = rep("forecASD_posLabs", 6),
+                         SFARIset = rep("new.SFARIHC",6),
+                         sampleSet= rep("",6))
+#dev.off()
+
+
+###
+#forecASD models on SFARIHC; cntrl expt
+###
+forec_sfari = plotROC_PR(type="forec",
+                         score = c("redo_forec_score", "noClass_forec_score", "noClassPPI_forec_score","noClassPPIBS_forec_score", "PPIonly_forec_score", "BrainSpanOnly_forec_score"),
+                         genesInPhenotype = rep("new.SFARIHC", 6),
+                         positiveLabels = rep("",6),
+                         SFARIset = rep("",6),
+                         sampleSet= rep("",6))
+
+
+grDevices::postscript("/home/mgunning/AutismProject/ASDMachineLearning/Results/Plots/forec_AUROC_PR_CI.ps")
+ggarrange(forec_novel, forec_sfari, ncol=2)
+dev.off()
+
 
 

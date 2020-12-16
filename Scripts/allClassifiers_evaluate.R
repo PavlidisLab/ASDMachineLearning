@@ -13,8 +13,7 @@ library(purrr)
 
 ######
 ###
-
-allClassifiers_ROC = read.csv("Data/allClassifiers/transformedClassifiers/allClassifiers_202012.csv", stringsAsFactors = FALSE) %>%
+allClassifiers_ROC = read.csv("/home/mgunning/AutismProject/ASDMachineLearning/Data/allClassifiers_forecASD_2012.csv", stringsAsFactors = FALSE) %>%
     dplyr::select(-X) 
 
 
@@ -317,7 +316,7 @@ evaluativeAUCRatesBootstrap = function(score, genesInPhenotype, positiveLabels, 
 
 
 ####
-#2 evaluations:
+#4 evaluations:
 #1) all scores on the new SFARIHC (2020) genes (cnrl expt)
 #scores = all 15 = 7 GBA ML; 5 GA; 3 constraint
 #genesInPhenotype = all new.SFARIHC
@@ -335,7 +334,7 @@ arglist = list(score = c("ASDprinceton_score", "ASD_frn_score", "DAMAGES_score",
                SFARIset=rep("",15))
 new.SFARIHCbootstrapaucs = pmap_dfr(arglist, evaluativeAUCRatesBootstrap)
 #write.csv(new.SFARIHCbootstrapaucs, "results/paper/new.SFARIHCAUCs_bootstrap_2020_finalTest.csv")
-write.csv(new.SFARIHCbootstrapaucs, "Data/allClassifiers/Results/allClassifiers/SFARIHC_bootstrap_2020.csv")
+write.csv(new.SFARIHCbootstrapaucs, "/home/mgunning/AutismProject/ASDMachineLearning/Results/SFARIHC_bootstrap_2020.csv")
 t2= Sys.time()
 
 ####
@@ -361,16 +360,49 @@ arglist = list(score = c("ASDprinceton_score", "ASD_frn_score", "DAMAGES_score",
                SFARIset=rep("new.SFARIHC",15))
 new.NOVELbootstrapaucs = pmap_dfr(arglist, evaluativeAUCRatesBootstrap)
 #write.csv(new.NOVELbootstrapaucs, "results/paper/novelAUCs_new.SFARIHC_bootstrap_2020_finalTest.csv")
-write.csv(new.NOVELbootstrapaucs, "Data/allClassifiers/Results/allClassifiers/TADAnovel_bootstrap_2020.csv")
+write.csv(new.NOVELbootstrapaucs, "/home/mgunning/AutismProject/ASDMachineLearning/Results/TADAnovel_bootstrap_2020.csv")
 
 t2= Sys.time()
 
 
 
 
+####
+#4 evaluations:
+#3) modified forecASD scores on the new SFARIHC (2020) genes (cnrl expt)
+#scores = all 6 forecASD models = redo_forec_score, noClass_forec_score,noClassPPI_forec_score,noClassPPIBS_forec_score, PPIonly_forec_score,BrainSpanOnly_forec_score
+#genesInPhenotype = all new.SFARIHC
+#positiveLabels = "" = empty b/c all built using these gene
+#SFARIset = "" = empty = only for TADA_novel
+####
+arglist = list(score = c("redo_forec_score", "noClass_forec_score","noClassPPI_forec_score",
+                         "noClassPPIBS_forec_score", "PPIonly_forec_score","BrainSpanOnly_forec_score"),
+               genesInPhenotype = rep("new.SFARIHC", 6),
+               positiveLabels = rep("",6),
+               SFARIset= rep("",6))
+new.SFARIHCbootstrapaucs = pmap_dfr(arglist, evaluativeAUCRatesBootstrap)
+write.csv(new.SFARIHCbootstrapaucs, "/home/mgunning/AutismProject/ASDMachineLearning/Results/forecASD_SFARIHC_bootstrap_202012.csv")
 
 
+####
+#4 evaluations:
+#4) modified forecASD scores on the TADA_novel genes, and removed positive training lables/SFARIHC genes (test expt)
+#scores = all 6 forecASD models = redo_forec_score, noClass_forec_score,noClassPPI_forec_score,noClassPPIBS_forec_score, PPIonly_forec_score,BrainSpanOnly_forec_score
+#genesInPhenotype = all TADA_novel
+#positiveLabels = 
+#forecASD training genes =  "forecASD_posLabs",
+#SFARIset = new.SFARIHC = removes these genes
 
+####
+
+
+arglist =list(score = c("redo_forec_score", "noClass_forec_score","noClassPPI_forec_score",
+                        "noClassPPIBS_forec_score", "PPIonly_forec_score","BrainSpanOnly_forec_score"),
+              genesInPhenotype = rep("TADA_novel", 6),
+              positiveLabels = rep("forecASD_posLabs",6),
+              SFARIset= rep("new.SFARIHC",6))
+new.TADAnovelbootstrapaucs = pmap_dfr(arglist, evaluativeAUCRatesBootstrap)
+write.csv(new.TADAnovelbootstrapaucs, "/home/mgunning/AutismProject/ASDMachineLearning/Results/forecASD_TADAnovel_bootstrap_202012.csv")
 
 
 

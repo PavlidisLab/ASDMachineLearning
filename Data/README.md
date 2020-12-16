@@ -1,6 +1,16 @@
 # ASDMachineLearning
 ## Data
 
+* forecASD_data
+    * source: https://github.com/LeoBman/forecASD
+    * rerun scripts 01_load_data.R; 02_network_models.R to get data below in order to rerun 03_ensemble_models.R, and adapate the final randomForest with different feature sets.
+        * 02_network_rf.Rdata
+        * 02_STRING_rf.Rdata
+        * 02_brainspan_RF.Rdata
+        * 01_training_labels.Rdata
+    * deviation: note randomForest version 4.6.14 was used to rerun code
+    
+
 * Main data table includes: 
     * gene scores for GBA ML, Hybrid, GA, and Constraint methods, including forecASD model adaptation gene scores
     * gene scores for generic gene annotations
@@ -11,6 +21,9 @@
     * SFARI gene scores
     * SFARI HC genes (binary)
     * TADA novel genes (binary)
+    
+* geneAliasInfo
+    * gene symbols, ncbi numbers used to clean classifier data
 
 ## Source Data
 
@@ -52,6 +65,7 @@
         
         * modified script: 03_ensemble_model.R
             * adapted trained random forests by removing different feature sets, and obtained the updated gene score for each adapted model
+    * Deviation: note randomForest version 4.6.14 was used to rerun code
     
 * *DAWN*
     * Paper: Liu et al., (2014) DAWN: a framework to identify autism genes and subnetworks using gene expression and genetics. Mol Autism
