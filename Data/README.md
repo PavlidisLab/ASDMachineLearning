@@ -11,13 +11,11 @@
     * deviation: note randomForest version 4.6.14 was used to rerun code
     
 
-* Main data table includes: 
+* allClassifiers data table: 
     * gene scores for GBA ML, Hybrid, GA, and Constraint methods, including forecASD model adaptation gene scores
     * gene scores for generic gene annotations
-    
     * positive training labels for GBA ML methods (binary)
     * "top" genes predicted to be ASD genes by GBA ML, Hybrid, GA and Constraint methods (binary)
-    
     * SFARI gene scores
     * SFARI HC genes (binary)
     * TADA novel genes (binary)
