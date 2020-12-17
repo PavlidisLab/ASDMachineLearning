@@ -20,16 +20,6 @@ All scripts are written in the R programming language:
 *forecASD retest*:
 * forecASD Model Modification: forecASD_03_ensemble_model.adaptations.R
 
-## Packages
-
-* randomForest_4.6-14
-* dplyr_1.0.2  
-* tidyr_1.1.2         
-* purrr_0.3.4  
-* zoo_1.8-8
-* DescTools_0.99.38   
-* ggpubr_0.4.0
-* ggplot2_3.3.2 
 
 ## Session Info
 
