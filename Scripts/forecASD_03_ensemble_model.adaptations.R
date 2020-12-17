@@ -6,16 +6,18 @@
 library(randomForest)
 library(dplyr)
 
-load("/home/mgunning/AutismProject/ASDMachineLearning/Data/forecASD_data/01_training_labels.Rdata")
-load("/home/mgunning/AutismProject/ASDMachineLearning/Data/forecASD_data/02_STRING_rf.Rdata")
-load("/home/mgunning/AutismProject/ASDMachineLearning/Data/forecASD_data/02_brainspan_RF.Rdata")
-load("/home/mgunning/AutismProject/ASDMachineLearning/Data/forecASD_data/02_network_rf.Rdata")
+unzip("./Data/forecASD_data.zip")
+
+load("./Data/forecASD_data/01_training_labels.Rdata")
+load("./Data/forecASD_data/02_STRING_rf.Rdata")
+load("./Data/forecASD_data/02_brainspan_RF.Rdata")
+load("./Data/forecASD_data/02_network_rf.Rdata")
 
 # # # # # # # # # # # # 
 #### Load in data #####
 # # # # # # # # # # # # 
 
-meta = read.csv("/home/mgunning/AutismProject/ASDMachineLearning/Data/forecASD_data/composite_table.csv", stringsAsFactors = F, row.names = 1)
+meta = read.csv("./Data/forecASD_data/composite_table.csv", stringsAsFactors = F, row.names = 1)
 
 string.prd = string.prd[rownames(meta), ]
 bs.prd = bs.prd[rownames(meta), ]
@@ -286,7 +288,7 @@ finalDat = left_join(final.data, final.data2) %>%
 
 
 
-grDevices::postscript("/home/mgunning/AutismProject/ASDMachineLearning/Results/Plots/forecASD_varIMP_202012.ps")
+grDevices::postscript("./Results/Plots/forecASD_varIMP_202012.ps")
 par(mfrow=c(2,4))
 varImpPlot(rf1, main="", type=1)
 varImpPlot(rf1, main="", type=2)
@@ -312,12 +314,12 @@ dev.off()
 #allclassifiers + gene alias info
 ###
 
-allClassifiers = read.csv("/home/mgunning/AutismProject/ASDMachineLearning/Data/allClassifiers_202012.csv", stringsAsFactors = FALSE) %>%
+unzip("./Data/allClassifiers_202012.zip")
+allClassifiers = read.csv("./Data/allClassifiers_202012.csv", stringsAsFactors = FALSE) %>%
 	dplyr::select(-X) 
 
-#allClassifiers = read.csv("Data/allClassifiers_202012", stringsAsFactors = FALSE) %>%
-#	dplyr::select(-X) 
 
+unzip("./Data/geneAliasInfo_all_2012.zip")
 geneAliasInfo = read.csv("/home/mgunning/AutismProject/ASDMachineLearning/Data/geneAliasInfo_all_202012.csv")
 
 ###
@@ -464,7 +466,7 @@ allClassifiers = allClassifiers %>%
 				  onlyPPITop  = ifelse(primary.gene.symbol %in% onlyPPITop$primary.gene.symbol, 1, 0),
 				  onlyBSTop  = ifelse(primary.gene.symbol %in% onlyBSTop$primary.gene.symbol, 1, 0))
 
-write.csv(allClassifiers, "/home/mgunning/AutismProject/ASDMachineLearning/Data/allClassifiers_forecASD_2012.csv")
+write.csv(allClassifiers, "./Data/allClassifiers_forecASD_2012.csv")
 
 
 

@@ -13,8 +13,8 @@ library(zoo)
 ###
 #data and meta
 ###
-
-allClassifiers_cor = read.csv("Data/allClassifiers/transformedClassifiers/allClassifiers_202012.csv", stringsAsFactors = FALSE) %>%
+unzip("./Data/allClassifiers_forecASD_202012.zip")
+allClassifiers_cor = read.csv("./Data/allClassifiers_forecASD_202012.csv", stringsAsFactors = FALSE) %>%
     dplyr::select(-X) 
 
 
@@ -78,7 +78,7 @@ labelColourX = c(ASDprinceton_score = "#E41A1C",
 #exac and gnomad and pLI, and oe lof
 #multifuncaltiy scores, number oh physical interaction partners, number of publications
 
-grDevices::postscript("Results/allClassifiers/plots/allScoreHeatmap.ps")
+grDevices::postscript("./Results/Plots/allScoreHeatmap.ps")
 allClassifiers_cor %>%
     dplyr::select(primary.gene.symbol,
                   ASDprinceton_score, ASD_frn_score, DAMAGES_score,RF_Lin_score,PANDA_score,
@@ -159,6 +159,6 @@ allClassifiers_overlap = allClassifiers_cor %>%
 overlap = crossprod(as.matrix(allClassifiers_overlap[2:17]))            # calculate the overlap               
 overlap[lower.tri(overlap)] <- NA
 
-write.csv(overlap, "Results/allClassifiers/topOverlap.csv")
+write.csv(overlap, "./Results/topOverlap.csv")
 
 

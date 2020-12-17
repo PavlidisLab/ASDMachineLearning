@@ -12,8 +12,9 @@ library(purrr)
 
 
 ######
-###
-allClassifiers_ROC = read.csv("/home/mgunning/AutismProject/ASDMachineLearning/Data/allClassifiers_forecASD_2012.csv", stringsAsFactors = FALSE) %>%
+
+unzip("./Data/allClassifiers_forecASD_202012.zip")
+allClassifiers_ROC = read.csv("./Data/allClassifiers_forecASD_2012.csv", stringsAsFactors = FALSE) %>%
     dplyr::select(-X) 
 
 
@@ -333,8 +334,7 @@ arglist = list(score = c("ASDprinceton_score", "ASD_frn_score", "DAMAGES_score",
                positiveLabels = rep("",15),
                SFARIset=rep("",15))
 new.SFARIHCbootstrapaucs = pmap_dfr(arglist, evaluativeAUCRatesBootstrap)
-#write.csv(new.SFARIHCbootstrapaucs, "results/paper/new.SFARIHCAUCs_bootstrap_2020_finalTest.csv")
-write.csv(new.SFARIHCbootstrapaucs, "/home/mgunning/AutismProject/ASDMachineLearning/Results/SFARIHC_bootstrap_2020.csv")
+write.csv(new.SFARIHCbootstrapaucs, "./Results/SFARIHC_bootstrap_2020.csv")
 t2= Sys.time()
 
 ####
@@ -359,8 +359,7 @@ arglist = list(score = c("ASDprinceton_score", "ASD_frn_score", "DAMAGES_score",
                                   "new.SFARIHC", "new.SFARIHC", "new.SFARIHC","new.SFARIHC", "new.SFARIHC","new.SFARIHC","new.SFARIHC", "new.SFARIHC"),
                SFARIset=rep("new.SFARIHC",15))
 new.NOVELbootstrapaucs = pmap_dfr(arglist, evaluativeAUCRatesBootstrap)
-#write.csv(new.NOVELbootstrapaucs, "results/paper/novelAUCs_new.SFARIHC_bootstrap_2020_finalTest.csv")
-write.csv(new.NOVELbootstrapaucs, "/home/mgunning/AutismProject/ASDMachineLearning/Results/TADAnovel_bootstrap_2020.csv")
+write.csv(new.NOVELbootstrapaucs, "./Results/TADAnovel_bootstrap_2020.csv")
 
 t2= Sys.time()
 
@@ -381,7 +380,7 @@ arglist = list(score = c("redo_forec_score", "noClass_forec_score","noClassPPI_f
                positiveLabels = rep("",6),
                SFARIset= rep("",6))
 new.SFARIHCbootstrapaucs = pmap_dfr(arglist, evaluativeAUCRatesBootstrap)
-write.csv(new.SFARIHCbootstrapaucs, "/home/mgunning/AutismProject/ASDMachineLearning/Results/forecASD_SFARIHC_bootstrap_202012.csv")
+write.csv(new.SFARIHCbootstrapaucs, "./Results/forecASD_SFARIHC_bootstrap_202012.csv")
 
 
 ####
@@ -402,8 +401,8 @@ arglist =list(score = c("redo_forec_score", "noClass_forec_score","noClassPPI_fo
               positiveLabels = rep("forecASD_posLabs",6),
               SFARIset= rep("new.SFARIHC",6))
 new.TADAnovelbootstrapaucs = pmap_dfr(arglist, evaluativeAUCRatesBootstrap)
-write.csv(new.TADAnovelbootstrapaucs, "/home/mgunning/AutismProject/ASDMachineLearning/Results/forecASD_TADAnovel_bootstrap_202012.csv")
+write.csv(new.TADAnovelbootstrapaucs, "./Results/forecASD_TADAnovel_bootstrap_202012.csv")
 
 
-
+####
 
