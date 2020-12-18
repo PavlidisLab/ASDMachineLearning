@@ -334,7 +334,7 @@ arglist = list(score = c("ASDprinceton_score", "ASD_frn_score", "DAMAGES_score",
                positiveLabels = rep("",15),
                SFARIset=rep("",15))
 new.SFARIHCbootstrapaucs = pmap_dfr(arglist, evaluativeAUCRatesBootstrap)
-write.csv(new.SFARIHCbootstrapaucs, "./Results/SFARIHC_bootstrap_2020.csv")
+write.csv(new.SFARIHCbootstrapaucs, "./Results/SFARIHC_bootstrap_202012.csv")
 t2= Sys.time()
 
 ####
@@ -359,7 +359,7 @@ arglist = list(score = c("ASDprinceton_score", "ASD_frn_score", "DAMAGES_score",
                                   "new.SFARIHC", "new.SFARIHC", "new.SFARIHC","new.SFARIHC", "new.SFARIHC","new.SFARIHC","new.SFARIHC", "new.SFARIHC"),
                SFARIset=rep("new.SFARIHC",15))
 new.NOVELbootstrapaucs = pmap_dfr(arglist, evaluativeAUCRatesBootstrap)
-write.csv(new.NOVELbootstrapaucs, "./Results/TADAnovel_bootstrap_2020.csv")
+write.csv(new.NOVELbootstrapaucs, "./Results/TADAnovel_bootstrap_202012.csv")
 
 t2= Sys.time()
 

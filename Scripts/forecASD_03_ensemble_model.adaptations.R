@@ -320,7 +320,7 @@ allClassifiers = read.csv("./Data/allClassifiers_202012.csv", stringsAsFactors =
 
 
 unzip("./Data/geneAliasInfo_all_2012.zip")
-geneAliasInfo = read.csv("/home/mgunning/AutismProject/ASDMachineLearning/Data/geneAliasInfo_all_202012.csv")
+geneAliasInfo = read.csv("./Data/geneAliasInfo_all_202012.csv")
 
 ###
 #forecASD
@@ -466,7 +466,7 @@ allClassifiers = allClassifiers %>%
 				  onlyPPITop  = ifelse(primary.gene.symbol %in% onlyPPITop$primary.gene.symbol, 1, 0),
 				  onlyBSTop  = ifelse(primary.gene.symbol %in% onlyBSTop$primary.gene.symbol, 1, 0))
 
-write.csv(allClassifiers, "./Data/allClassifiers_forecASD_2012.csv")
+write.csv(allClassifiers, "./Data/allClassifiers_forecASD_202012.csv")
 
 
 
