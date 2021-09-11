@@ -7,6 +7,8 @@ Discovering genes involved in complex human genetic disorders is a major challen
 Preprint: Can machine learning aid in identifying disease genes? The case of autism spectrum disorder
 URL: [https://doi.org/10.1101/2020.11.26.394676](https://doi.org/10.1101/2020.11.26.394676)
 
+Publication: “Guilt by association” is not competitive with genetic association for identifying autism risk genes
+URL: [https://www.nature.com/articles/s41598-021-95321-y](https://www.nature.com/articles/s41598-021-95321-y)
 
 ## Code
 
